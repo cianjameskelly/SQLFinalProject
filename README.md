@@ -2,4 +2,4 @@
 
 
 
-Open "SQLFinalProject" to see the queries and what occurs when they are entered.
+Open "SQLFinalProject.docx" to see the queries and what occurs when they are entered.
