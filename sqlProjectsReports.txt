@@ -1,0 +1,81 @@
+1)
+SELECT
+    *
+FROM
+    department
+NATURAL JOIN
+    section
+ORDER BY
+    `section`.`instructor` ASC
+
+2)
+SELECT DISTINCT
+    instructor,
+    dept_name
+FROM
+    department
+NATURAL JOIN
+    section
+
+3)
+SELECT
+    course_ID,
+    sec_ID,
+    days,
+    start_time,
+    end_time
+FROM
+    section
+WHERE
+    course_ID LIKE '%CSC%'
+
+4)
+DELETE
+    sec
+FROM
+    section sec
+WHERE
+    (
+    SELECT
+        1
+    FROM
+        course cou
+    WHERE
+        cou.credits = 3 AND sec.days LIKE '%W%' AND cou.course_ID = sec.course_ID
+)
+
+5)
+SELECT
+    section.course_ID, sec_ID, semester, year, building, room_number, days, start_time, end_time, instructor, course.course_name, course.dept_name, course.credits
+FROM
+    section
+INNER JOIN
+    course
+ON
+    course.course_ID = section.course_ID
+WHERE
+    section.course_ID LIKE '%CSC%' OR section.course_ID LIKE '%MATH%';
+--------------------------------------------------------------------------------------------------------
+SELECT
+    section.course_ID, sec_ID, semester, year, building, room_number, days, start_time, end_time, instructor, course.course_name, course.dept_name, course.credits
+FROM
+    section
+LEFT JOIN
+    course
+ON
+    course.course_ID = section.course_ID
+WHERE
+    section.course_ID LIKE '%CSC%' OR section.course_ID LIKE '%MATH%';
+SELECT
+    section.course_ID, sec_ID, semester, year, building, room_number, days, start_time, end_time, instructor, course.course_name, course.dept_name, course.credits
+FROM
+    section
+RIGHT JOIN
+    course
+ON
+    course.course_ID = section.course_ID
+WHERE
+    section.course_ID LIKE '%CSC%' OR section.course_ID LIKE '%MATH%';
+
+There's no difference, the same results are shown in the report.
+
